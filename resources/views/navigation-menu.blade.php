@@ -2,13 +2,13 @@
  $nav_links = [
      [
          'name'=>'Dashboard',
-         'route'=> route('dashboard'),
-         'active'=>request()->routeIs('dashboard')
+         'route'=> route('home'),
+         'active'=>request()->routeIs('home')
      ],
      [
         'name'=>'Courses',
-         'route'=> "#",
-         'active'=>false
+        'route'=> route('courses.index'),
+        'active'=>request()->routeIs('courses.*')
      ]
  ];
 @endphp
@@ -20,7 +20,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block w-auto h-9" />
                     </a>
                 </div>
