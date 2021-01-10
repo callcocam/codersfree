@@ -1,0 +1,6 @@
+{
+        "pathMappings": {
+        "/var/www/html": "${workspaceFolder}/www",
+        "/app": "${workspaceFolder}/app"
+    }
+}

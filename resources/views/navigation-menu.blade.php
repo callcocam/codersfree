@@ -64,22 +64,25 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
-
-                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                                    {{ __('API Tokens') }}
-                                </x-jet-dropdown-link>
-                            @endif
-
+                            @can('Ler Curso')
+                            <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
+                                {{ __('Instrutor') }}
+                            </x-jet-dropdown-link>
+                            @endcan   
+                            @can('Ver Dashboard')
+                            <x-jet-dropdown-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home')">
+                                {{ __('Administrador') }}
+                            </x-jet-dropdown-link>
+                            @endcan
+                            
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -91,7 +94,6 @@
                     
             @else
             <x-jet-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">Login</x-jet-nav-link>
-
             @if (Route::has('register'))
                 <x-jet-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">Register</x-jet-nav-link>
             @endif     
@@ -142,13 +144,16 @@
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
-
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
-                    </x-jet-responsive-nav-link>
-                @endif
-
+                @can('Ler Curso')
+                <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
+                    {{ __('Instrutor') }}
+                </x-jet-responsive-nav-link>
+                @endcan
+                @can('Ver Dashboard')
+                <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home')">
+                    {{ __('Administrador') }}
+                </x-jet-responsive-nav-link>
+                @endcan
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

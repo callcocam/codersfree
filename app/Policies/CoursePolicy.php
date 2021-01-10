@@ -13,4 +13,9 @@ class CoursePolicy
     public function enrolled(User $user, Course $course){
       return $course->students->contains($user->id);
     }
+
+    public function published(?User $user, Course $course)
+    {
+       return $course->status == Course::PUBLISHED;
+    }
 }

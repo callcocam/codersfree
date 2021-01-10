@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Coders</b>FREE',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'CodersFree',
 
     /*
     |--------------------------------------------------------------------------
@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -230,18 +230,26 @@ return [
             'topnav' => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Dashdoard',
+            'route'         => 'admin.home',
+            'can'         => 'Ver Dashboard',
+            'icon'        => 'fas fa-fw fa-tachometer-alt'
         ],
         ['header' => 'account_settings'],
+        [
+            'text'        => 'Lista de users',
+            'route'       => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'can'         => 'Ler Usuários',
+            'active'      =>['admin/users/*']
+        ],
+         [
+            'text'        => 'Lista de roles',
+            'route'       => 'admin.roles.index',
+            'icon'        => 'fas fa-fw fa-user-cog',
+            'can'         => 'Listar Role',
+            'active'      =>['admin/roles/*']
+        ],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -289,22 +297,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 
@@ -426,5 +418,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/9.-Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
