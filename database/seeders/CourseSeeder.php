@@ -11,6 +11,7 @@ use App\Models\Audience;
 use App\Models\Section;
 use App\Models\Lesson;
 use App\Models\Description;
+use App\Models\User;
 class CourseSeeder extends Seeder
 {
     /**
@@ -22,6 +23,13 @@ class CourseSeeder extends Seeder
     {
       $courses =  Course::factory(40)->create();
       foreach ($courses as $course) {
+         $user = [];
+         for ($i=0; $i < rand(5,12); $i++) { 
+            $user[] = User::all()->random()->id;
+         }
+
+         $course->students()->attach($user);
+
          Image::factory(1)->create([
             'imageable_id'=>$course->id,
             'imageable_type'=>Course::class

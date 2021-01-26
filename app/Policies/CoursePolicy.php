@@ -18,4 +18,9 @@ class CoursePolicy
     {
        return $course->status == Course::PUBLISHED;
     }
+    
+    public function dicatated(User $user, Course $course)
+    {
+       return $course->user_id == $user->id;
+    }
 }
