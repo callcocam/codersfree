@@ -14,8 +14,8 @@
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
-$app->bind('public.path',function ($app){
-    return app_path('public_html/ead-siga-smart');
+$app->bind('path.public',function ($app){
+    return base_path('public_html/ead-siga-smart');
 });
 /*
 |--------------------------------------------------------------------------
